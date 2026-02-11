@@ -1,0 +1,63 @@
+version: 2
+
+project_name: go-tools
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: go-tools
+    dir: go
+    binary: go-tools
+    env:
+      - CGO_ENABLED=1
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w
+      - -X github.com/melkmeshi/laravel-go-tools/cmd.Version={{.Version}}
+      - -X github.com/melkmeshi/laravel-go-tools/cmd.Commit={{.ShortCommit}}
+    overrides:
+      - goos: linux
+        goarch: amd64
+        env:
+          - CC=x86_64-linux-gnu-gcc
+          - CXX=x86_64-linux-gnu-g++
+      - goos: linux
+        goarch: arm64
+        env:
+          - CC=aarch64-linux-gnu-gcc
+          - CXX=aarch64-linux-gnu-g++
+      - goos: darwin
+        goarch: amd64
+        env:
+          - CC=o64-clang
+          - CXX=o64-clang++
+      - goos: darwin
+        goarch: arm64
+        env:
+          - CC=oa64-clang
+          - CXX=oa64-clang++
+
+archives:
+  - id: go-tools
+    builds:
+      - go-tools
+    name_template: "go-tools-{{ .Os }}-{{ .Arch }}"
+    format: tar.gz
+
+checksum:
+  name_template: "checksums.txt"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "^ci:"

@@ -1,0 +1,60 @@
+name: Build & Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  go-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+          cache-dependency-path: go/go.sum
+
+      - name: Build
+        run: cd go && go build -o ../bin/go-tools .
+
+      - name: Test Go
+        run: cd go && go test ./...
+
+      - name: Test CLI
+        run: |
+          echo '{"set_a":[1,2,3],"set_b":[2,3,4]}' | ./bin/go-tools sets intersect
+          echo '{"lat":37.7759,"lng":-122.4179,"resolution":9}' | ./bin/go-tools h3 index
+
+  php-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ["8.2", "8.3", "8.4"]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+          cache-dependency-path: go/go.sum
+
+      - name: Build Go binary
+        run: cd go && go build -o ../bin/go-tools .
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Run tests
+        run: vendor/bin/pest

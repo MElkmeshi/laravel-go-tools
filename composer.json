@@ -1,0 +1,50 @@
+{
+    "name": "melkmeshi/laravel-go-tools",
+    "description": "Go-powered high-performance tools for Laravel: H3 geospatial, OSRM routing, and fast set operations",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "melkmeshi"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^11.0|^12.0",
+        "symfony/process": "^7.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^9.0|^10.0",
+        "pestphp/pest": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Melkmeshi\\GoTools\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Melkmeshi\\GoTools\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Melkmeshi\\GoTools\\GoToolsServiceProvider"
+            ],
+            "aliases": {
+                "H3": "Melkmeshi\\GoTools\\Facades\\H3",
+                "Osrm": "Melkmeshi\\GoTools\\Facades\\Osrm",
+                "Sets": "Melkmeshi\\GoTools\\Facades\\Sets"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

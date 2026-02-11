@@ -1,0 +1,7 @@
+/vendor/
+/node_modules/
+.env
+.phpunit.result.cache
+bin/go-tools-*
+bin/go-tools
+go/go-tools
