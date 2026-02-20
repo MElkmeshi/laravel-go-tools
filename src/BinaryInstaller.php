@@ -102,7 +102,7 @@ class BinaryInstaller
 
     protected function downloadAndExtract(string $url, string $binaryPath): void
     {
-        $tempFile = tempnam(sys_get_temp_dir(), 'go-tools-');
+        $tempFile = tempnam(sys_get_temp_dir(), 'go-tools-') . '.tar.gz';
 
         $response = Http::withOptions(['sink' => $tempFile])->get($url);
 
