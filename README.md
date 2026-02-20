@@ -47,13 +47,14 @@ use Melkmeshi\GoTools\Facades\H3;
 
 // Convert coordinates to H3 cell
 $cell = H3::latLngToCell(37.7749, -122.4194, 10);
-echo $cell->index;
+echo $cell->index; // e.g. "8a283082800ffff"
 
 // Get neighboring cells within k steps
-$neighbors = H3::kRing('8a283473fffffff', 1);
+$neighbors = H3::kRing($cell->index, 1);
 
 // Grid distance between two cells
-$distance = H3::gridDistance('8a283473fffffff', '8a2834730ffffff');
+$cellB = H3::latLngToCell(37.7750, -122.4180, 10);
+$distance = H3::gridDistance($cell->index, $cellB->index);
 
 // Fill a polygon with H3 cells
 $cells = H3::polygonToCells([
