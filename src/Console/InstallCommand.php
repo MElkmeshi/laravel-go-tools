@@ -9,14 +9,14 @@ use Melkmeshi\GoTools\BinaryResolver;
 class InstallCommand extends Command
 {
     protected $signature = 'go-tools:install
-                            {--version= : Specific version to install (e.g. v1.0.0)}
+                            {--ver= : Specific version to install (e.g. v1.0.0)}
                             {--force : Force reinstall even if already installed}';
 
     protected $description = 'Download and install the Go tools binary for your platform';
 
     public function handle(BinaryInstaller $installer, BinaryResolver $resolver): int
     {
-        $version = $this->option('version');
+        $version = $this->option('ver');
         $force = $this->option('force');
 
         $this->info('Go Tools Binary Installer');
