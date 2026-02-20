@@ -6,7 +6,6 @@ use Illuminate\Support\ServiceProvider;
 use Melkmeshi\GoTools\Console\InstallCommand;
 use Melkmeshi\GoTools\Console\StatusCommand;
 use Melkmeshi\GoTools\Tools\H3Tool;
-use Melkmeshi\GoTools\Tools\OsrmTool;
 use Melkmeshi\GoTools\Tools\DbCompareTool;
 use Melkmeshi\GoTools\Tools\SetsTool;
 
@@ -19,7 +18,6 @@ class GoToolsServiceProvider extends ServiceProvider
         $this->app->singleton(BinaryResolver::class);
         $this->app->singleton(BinaryRunner::class);
         $this->app->singleton(H3Tool::class);
-        $this->app->singleton(OsrmTool::class);
         $this->app->singleton(SetsTool::class);
         $this->app->singleton(DbCompareTool::class);
     }

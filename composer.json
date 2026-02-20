@@ -1,6 +1,6 @@
 {
     "name": "melkmeshi/laravel-go-tools",
-    "description": "Go-powered high-performance tools for Laravel: H3 geospatial, OSRM routing, and fast set operations",
+    "description": "Go-powered high-performance tools for Laravel: H3 geospatial and fast set operations",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -34,7 +34,6 @@
             ],
             "aliases": {
                 "H3": "Melkmeshi\\GoTools\\Facades\\H3",
-                "Osrm": "Melkmeshi\\GoTools\\Facades\\Osrm",
                 "Sets": "Melkmeshi\\GoTools\\Facades\\Sets",
                 "DbCompare": "Melkmeshi\\GoTools\\Facades\\DbCompare"
             }

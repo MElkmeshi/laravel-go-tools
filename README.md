@@ -5,7 +5,6 @@ Go-powered high-performance tools for Laravel. Offloads CPU-intensive operations
 ## Features
 
 - **H3** — Uber's H3 geospatial indexing (lat/lng to cell, k-ring, distance, polyfill)
-- **OSRM** — Open Source Routing Machine integration (routing, distance matrices)
 - **Sets** — Fast set operations on large collections (intersect, union, diff)
 - **DbCompare** — Cross-database table comparison (MySQL & PostgreSQL)
 
@@ -64,31 +63,6 @@ $cells = H3::polygonToCells([
 ], 8);
 ```
 
-### OSRM Routing
-
-```php
-use Melkmeshi\GoTools\Facades\Osrm;
-
-// Calculate a route
-$route = Osrm::route([
-    [37.7749, -122.4194],
-    [37.3382, -121.8863],
-]);
-
-echo $route->distance; // meters
-echo $route->duration; // seconds
-echo $route->geometry; // encoded polyline
-
-// Distance/duration matrix
-$matrix = Osrm::table(
-    origins: [[37.7749, -122.4194], [37.3382, -121.8863]],
-    destinations: [[37.7749, -122.4194], [37.3382, -121.8863]],
-);
-
-echo $matrix->durations[0][1]; // seconds
-echo $matrix->distances[0][1]; // meters
-```
-
 ### Set Operations
 
 ```php
@@ -139,7 +113,6 @@ Environment variables:
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `GO_TOOLS_BINARY_PATH` | auto-detected | Custom path to the Go binary |
-| `OSRM_URL` | `http://router.project-osrm.org` | OSRM server URL |
 | `GO_TOOLS_TIMEOUT` | `30` | Default command timeout (seconds) |
 | `GO_TOOLS_DB_COMPARE_TIMEOUT` | `300` | DB compare timeout (seconds) |
 

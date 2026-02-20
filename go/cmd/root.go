@@ -7,7 +7,7 @@ import (
 var rootCmd = &cobra.Command{
 	Use:   "go-tools",
 	Short: "Go-powered tools for Laravel",
-	Long:  "High-performance CLI tools for Laravel: H3 geospatial, OSRM routing, and fast set operations.",
+	Long:  "High-performance CLI tools for Laravel: H3 geospatial and fast set operations.",
 }
 
 func Execute() error {
