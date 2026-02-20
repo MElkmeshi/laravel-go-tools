@@ -35,7 +35,8 @@
             "aliases": {
                 "H3": "Melkmeshi\\GoTools\\Facades\\H3",
                 "Osrm": "Melkmeshi\\GoTools\\Facades\\Osrm",
-                "Sets": "Melkmeshi\\GoTools\\Facades\\Sets"
+                "Sets": "Melkmeshi\\GoTools\\Facades\\Sets",
+                "DbCompare": "Melkmeshi\\GoTools\\Facades\\DbCompare"
             }
         }
     },

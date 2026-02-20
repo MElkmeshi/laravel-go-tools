@@ -54,4 +54,16 @@ return [
     */
     'timeout' => env('GO_TOOLS_TIMEOUT', 30),
 
+    /*
+    |--------------------------------------------------------------------------
+    | DB Compare Timeout
+    |--------------------------------------------------------------------------
+    |
+    | Maximum execution time in seconds for the db compare command.
+    | This is higher than the default timeout because comparing large
+    | datasets across databases can take several minutes.
+    |
+    */
+    'db_compare_timeout' => env('GO_TOOLS_DB_COMPARE_TIMEOUT', 300),
+
 ];

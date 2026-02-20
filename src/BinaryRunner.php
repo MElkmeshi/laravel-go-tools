@@ -20,10 +20,10 @@ class BinaryRunner
      *
      * @throws BinaryExecutionException
      */
-    public function run(array $command, array $input = []): array
+    public function run(array $command, array $input = [], ?int $timeout = null): array
     {
         $binary = $this->resolver->resolve();
-        $timeout = config('go-tools.timeout', 30);
+        $timeout ??= config('go-tools.timeout', 30);
 
         $process = new Process(
             array_merge([$binary], $command),
