@@ -27,7 +27,6 @@ class StatusCommand extends Command
             ['Version', $version ?? 'N/A'],
             ['Binary path', $installed ? $resolver->resolve() : 'Not found'],
             ['Config version', config('go-tools.version', 'latest')],
-            ['OSRM URL', config('go-tools.osrm_url')],
         ]);
 
         if (! $installed) {
